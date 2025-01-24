@@ -41,19 +41,28 @@ document.addEventListener('DOMContentLoaded', () => {
     async function analyzeDream() {
         const description = elements.description.value.trim();
         if (!description) return alert('Təhlil üçün təsvir lazımdır!');
-
+    
         try {
-            const response = await fetch('http://localhost:3000/api/analyze-dream', {
+            const response = await fetch('http://localhost:3002/api/analyze-dream', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({description})
             });
             
             const data = await response.json();
-            displayAnalysis(data.analysis || data.error);
+            displayAnalysis(data.analysis || "Gözlənilməz xəta baş verdi"); // Əlavə fallback
+    
         } catch (error) {
-            displayAnalysis('Xəta: ' + error.message);
+            displayAnalysis("API sorğusu uğursuz oldu: " + error.message);
         }
+    }
+    
+    function displayAnalysis(text) {
+        const analysisDiv = document.getElementById('aiAnalysisText');
+        // replace() metodundan əvvəl null/undefined yoxlaması
+        const safeText = text ? text.replace(/\n/g, '<br>') : "Boş cavab alındı";
+        analysisDiv.innerHTML = `<p>${safeText}</p>`;
+        analysisDiv.scrollIntoView({behavior: 'smooth'});
     }
 
     // UI Yeniləmə
