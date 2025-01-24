@@ -1,0 +1,64 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    background: #f5f5f5;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.form-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input, textarea, button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    background: #2c3e50;
+    color: white;
+    cursor: pointer;
+    grid-column: span 2;
+}
+
+button:hover {
+    background: #34495e;
+}
+
+.stats-section {
+    margin: 20px 0;
+}
+
+#tagCloud {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    background: #3498db;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+}
+
+.dream-entry {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
