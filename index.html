@@ -2,36 +2,48 @@
 <html lang="az">
 <head>
     <meta charset="UTF-8">
-    <title>Yuxu Monitorinq Proqramı</title>
+    <title>Ağıllı Yuxu Təhlilçi</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Yuxu Gündəliyi 📖</h1>
-        
-        <!-- Yeni Yuxu Formu -->
+        <h1>🌙 Yuxu Monitorinq Proqramı</h1>
+
         <div class="form-section">
-            <input type="date" id="date" required>
-            <input type="number" id="duration" placeholder="Yuxu müddəti (saat)" min="0" step="0.5" required>
-            <input type="number" id="quality" placeholder="Keyfiyyət (1-10)" min="1" max="10" required>
-            <textarea id="description" placeholder="Yuxu təsviri..."></textarea>
-            <input type="text" id="tags" placeholder="Teqlər (vergüllə ayrılmış)">
-            <button onclick="saveDream()">Yuxunu Qeyd Et</button>
+            <input type="date" id="dateInput" required>
+            <input type="number" id="durationInput" placeholder="Müddət (saat)" min="0" step="0.5" required>
+            <input type="number" id="qualityInput" placeholder="Keyfiyyət (1-10)" min="1" max="10" required>
+            <textarea id="descriptionInput" placeholder="Yuxu təsviri..."></textarea>
+            <input type="text" id="tagsInput" placeholder="Teqlər (vergüllə ayrılmış)">
+            
+            <div class="button-group">
+                <button id="saveBtn">Yadda Saxla</button>
+                <button id="analyzeBtn">AI Təhlili</button>
+            </div>
         </div>
 
-        <!-- Statistika və Qrafiklər -->
-        <div class="stats-section">
-            <h2>Statistika 📊</h2>
+        <div class="ai-result">
+            <h3>🧠 AI Təhlili:</h3>
+            <div id="aiAnalysisText"></div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <h4>📊 Orta Keyfiyyət</h4>
+                <p id="avgQualityValue">-</p>
+            </div>
+            <div class="stat-item">
+                <h4>⏳ Orta Müddət</h4>
+                <p id="avgDurationValue">-</p>
+            </div>
             <canvas id="qualityChart"></canvas>
-            <div id="tagCloud"></div>
         </div>
 
-        <!-- Yuxu Arxivi -->
-        <div class="archive-section">
-            <h2>Arxiv 🔍</h2>
+        <div class="dream-list">
+            <h2>📂 Yuxu Arxivi</h2>
             <input type="text" id="searchInput" placeholder="Axtarış...">
-            <div id="dreamList"></div>
+            <div id="dreamEntries"></div>
         </div>
     </div>
 
